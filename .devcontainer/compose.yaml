@@ -2,7 +2,9 @@ name: rabbitmq-scala-devcontainer
 
 services:
   devcontainer:
-    image: eclipse-temurin:25.0.2_10-jdk
+    build:
+      context: .
+      dockerfile: Dockerfile
 
   rabbitmq:
     image: rabbitmq:4-management
