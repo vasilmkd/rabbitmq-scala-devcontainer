@@ -1,13 +1,11 @@
 package org.example.rabbitmq
 
 import java.nio.charset.StandardCharsets
-import java.time.Instant
 
 object Producer:
   def main(args: Array[String]): Unit =
-    println(Instant.now())
     withChannel(createConnectionFactory()): channel =>
       declareQueue(channel, QueueName)
-      val message = "Hello, Scalar!"
-      channel.basicPublish("", QueueName, null, message.getBytes(StandardCharsets.UTF_8))
+      val message = Message("Hello, Scalar!")
+      channel.basicPublish("", QueueName, null, message.serialize)
       println(s" [x] Sent '$message'")

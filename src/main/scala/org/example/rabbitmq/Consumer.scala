@@ -2,8 +2,6 @@ package org.example.rabbitmq
 
 import com.rabbitmq.client.DeliverCallback
 
-import java.nio.charset.StandardCharsets
-
 object Consumer:
   def main(args: Array[String]): Unit =
     val factory = createConnectionFactory()
@@ -13,7 +11,7 @@ object Consumer:
     println(" [*] Waiting for messages.")
 
     val deliverCallback: DeliverCallback = (_, delivery) =>
-      val message = String(delivery.getBody, StandardCharsets.UTF_8)
+      val message = Message.deserialize(delivery.getBody)
       println(s" [x] Received '$message'")
 
     channel.basicConsume(QueueName, true, deliverCallback, _ => ())
