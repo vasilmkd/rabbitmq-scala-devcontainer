@@ -1,9 +1,12 @@
 package org.example.rabbitmq
 
 object Producer:
-  def main(args: Array[String]): Unit =
+  def publishMessage(message: String): Unit =
     withChannel(createConnectionFactory()): channel =>
       declareQueue(channel, QueueName)
-      val message = Message("Hello, Scalar!")
-      channel.basicPublish("", QueueName, null, message.serialize)
-      println(s" [x] Sent '$message'")
+      val msg = Message(message)
+      channel.basicPublish("", QueueName, null, msg.serialize)
+      println(s" [x] Sent '$msg'")
+
+  def main(args: Array[String]): Unit =
+    publishMessage("Hello, Scalar!")
