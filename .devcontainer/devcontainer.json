@@ -1,5 +1,6 @@
 {
   "dockerComposeFile": "compose.yaml",
   "service": "devcontainer",
-  "workspaceFolder": "/devcontainer-workspace"
+  "workspaceFolder": "/devcontainer-workspace",
+  forwardPorts: [ 8080 ]
 }
