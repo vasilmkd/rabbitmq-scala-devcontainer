@@ -4,6 +4,8 @@ import com.rabbitmq.client.{Channel, ConnectionFactory}
 
 import scala.util.Using
 
+final val QueueName = "scalar"
+
 def createConnectionFactory(): ConnectionFactory =
   val factory = ConnectionFactory()
   factory.setHost("rabbitmq")

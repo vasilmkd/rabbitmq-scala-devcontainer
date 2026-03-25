@@ -3,8 +3,6 @@ package org.example.rabbitmq
 import java.nio.charset.StandardCharsets
 
 object Producer:
-  private final val QueueName = "scalar"
-
   def main(args: Array[String]): Unit =
     withChannel(createConnectionFactory()): channel =>
       declareQueue(channel, QueueName)

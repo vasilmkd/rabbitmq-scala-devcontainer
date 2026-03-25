@@ -5,8 +5,6 @@ import com.rabbitmq.client.DeliverCallback
 import java.nio.charset.StandardCharsets
 
 object Consumer:
-  private final val QueueName = "scalar"
-
   def main(args: Array[String]): Unit =
     val factory = createConnectionFactory()
     val channel = createChannel(factory)
