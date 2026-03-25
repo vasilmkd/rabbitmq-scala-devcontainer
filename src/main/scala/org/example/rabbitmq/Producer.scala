@@ -1,7 +1,5 @@
 package org.example.rabbitmq
 
-import java.nio.charset.StandardCharsets
-
 object Producer:
   def main(args: Array[String]): Unit =
     withChannel(createConnectionFactory()): channel =>

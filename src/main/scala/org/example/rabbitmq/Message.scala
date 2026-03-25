@@ -4,9 +4,7 @@ import java.io.{ByteArrayInputStream, ByteArrayOutputStream, ObjectInputStream, 
 import java.time.Instant
 import scala.util.Using
 
-final case class Message(message: String):
-  val time: Instant = Instant.now()
-
+final case class Message(message: String, timestamp: Instant = Instant.now()):
   def serialize: Array[Byte] =
     Using.resource(ByteArrayOutputStream()): bos =>
       Using.resource(ObjectOutputStream(bos)): oos =>

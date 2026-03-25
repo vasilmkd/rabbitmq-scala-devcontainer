@@ -3,11 +3,18 @@ package org.example
 import munit.FunSuite
 import org.example.rabbitmq.Message
 
+import java.time.Instant
+
 class MessageSuite extends FunSuite:
 
   test("every message instance contains a string"):
     val message = Message("this is a test message")
     assertEquals(message.message, "this is not the same message")
+
+  test("every message instance contains a timestamp"):
+    val timestamp = Instant.now()
+    val message = Message("test message", timestamp)
+    assertEquals(message.timestamp, timestamp)
 
   test("serialization and deserialization"):
     val originalMessage = Message("this is another message")
