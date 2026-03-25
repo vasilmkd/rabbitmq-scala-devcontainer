@@ -6,7 +6,7 @@ object Producer:
       declareQueue(channel, QueueName)
       val msg = Message(message)
       channel.basicPublish("", QueueName, null, msg.serialize)
-      println(s" [x] Sent '$msg'")
+      println(s" [x] Sent: $msg")
 
   def main(args: Array[String]): Unit =
     publishMessage("Hello, Scalar!")

@@ -12,7 +12,7 @@ object Consumer:
 
     val deliverCallback: DeliverCallback = (_, delivery) =>
       val message = Message.deserialize(delivery.getBody)
-      println(s" [x] Received '$message'")
+      println(s" [x] Received: $message")
 
     channel.basicConsume(QueueName, true, deliverCallback, _ => ())
   end main

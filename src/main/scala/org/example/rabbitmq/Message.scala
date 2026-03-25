@@ -11,6 +11,9 @@ final case class Message(message: String, timestamp: Instant = Instant.now()):
         oos.writeObject(this)
       bos.toByteArray
 
+  override def toString: String =
+    s"Message(message = $message, timestamp = $timestamp)"
+
 object Message:
   def deserialize(bytes: Array[Byte]): Message =
     Using.resource(ByteArrayInputStream(bytes)): bis =>
