@@ -7,8 +7,7 @@ import scala.util.Using
 final case class Message(message: String, timestamp: Instant = Instant.now()):
   def serialize: Array[Byte] =
     Using.resource(ByteArrayOutputStream()): bos =>
-      Using.resource(ObjectOutputStream(bos)): oos =>
-        oos.writeObject(this)
+      Using.resource(ObjectOutputStream(bos))(_.writeObject(this))
       bos.toByteArray
 
   override def toString: String =
