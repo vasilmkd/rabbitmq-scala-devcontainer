@@ -13,6 +13,7 @@ class MessageSuite extends FunSuite:
 
   test("every message instance contains a timestamp"):
     val timestamp = Instant.now()
+    this is an intentional compiler error
     val message = Message("test message", timestamp)
     assertEquals(message.timestamp, timestamp)
 
