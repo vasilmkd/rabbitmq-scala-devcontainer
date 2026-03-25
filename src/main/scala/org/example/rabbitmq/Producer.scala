@@ -1,9 +1,11 @@
 package org.example.rabbitmq
 
 import java.nio.charset.StandardCharsets
+import java.time.Instant
 
 object Producer:
   def main(args: Array[String]): Unit =
+    println(Instant.now())
     withChannel(createConnectionFactory()): channel =>
       declareQueue(channel, QueueName)
       val message = "Hello, Scalar!"
